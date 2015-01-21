@@ -10,7 +10,8 @@ Crafty.scene('Loading', function(){
 		.attr({ x: 0, y: 100, w: 200 });
 		
 	console.log("done writing loading");
-	loadJSONs();
+	loadBuildings();
+	loadTransports();
 	var assetsObj = {
 		/*"audio": {
 			"beep": ["beep.wav", "beep.mp3", "beep.ogg"],
