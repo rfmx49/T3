@@ -1,0 +1,167 @@
+/*toolboxTop sprite map
+Width 180 height 20
+x postions 0 20 40 60 80 100 120 140 160
+y postions 0
+	0 		20		40		60		80		100		120		140		160
+	0		1		2		3		4		5		6		7		8
+0	dozer	pointer	finder	zoomin	zoomout	pause	play	playx2	playx3
+*/
+
+/*First Row
+y 0 */
+#toolboxDozer {
+	background: url(../res/images/ui/toolboxtopsprite.png) 0 0;
+}
+#toolboxPointer {
+	background: url(../res/images/ui/toolboxtopsprite.png) -20px 0;
+}
+#toolboxFinder {
+	background: url(../res/images/ui/toolboxtopsprite.png) -40px 0;
+}
+#toolboxZoomin {
+	background: url(../res/images/ui/toolboxtopsprite.png) -60px 0;
+}
+#toolboxZoomout {
+	background: url(../res/images/ui/toolboxtopsprite.png) -80px 0;
+}
+#toolboxPause {
+	background: url(../res/images/ui/toolboxtopsprite.png) -100px 0;
+}
+#toolboxPlay {
+	background: url(../res/images/ui/toolboxtopsprite.png) -120px 0;
+}
+#toolboxPlayx2 {
+	background: url(../res/images/ui/toolboxtopsprite.png) -140px 0;
+}
+#toolboxPlayx3 {
+	background: url(../res/images/ui/toolboxtopsprite.png) -160px 0;
+}
+
+
+/*toolboxbot sprite map
+Width 32 height 32
+x postions 0 32 64 96 128 160 192 224
+y postions 0 32 64 96
+	0 		32		64		96		128		160		192		224
+	0		1		2		3		4		5		6		7
+0	lobby	floor	stair	escalat	elev1	elevser	elevexp	office
+1	hotel1	hotel2	hotelsu	fastfd	resturn	shop	cine	hall	
+2	parklvl	parkspt	recyle	subway	church	secur	health	hotelservice
+3	condo
+
+*/
+
+/*First Row
+y 0 */
+#toolboxLobby {
+	background: url(../res/images/ui/toolboxbotsprite.png) 0 0;
+}
+#toolboxFloor {
+	background: url(../res/images/ui/toolboxbotsprite.png) -32px 0;
+}
+#toolboxStair {
+	background: url(../res/images/ui/toolboxbotsprite.png) -64px 0;
+}
+#toolboxEscalat {
+	background: url(../res/images/ui/toolboxbotsprite.png) -96px 0;
+}
+#toolboxElev1 {
+	background: url(../res/images/ui/toolboxbotsprite.png) -128px 0;
+}
+#toolboxElevser {
+	background: url(../res/images/ui/toolboxbotsprite.png) -160px 0;
+}
+#toolboxElevexp {
+	background: url(../res/images/ui/toolboxbotsprite.png) -192px 0;
+}
+#toolboxOffice {
+	background: url(../res/images/ui/toolboxbotsprite.png) -224px 0;
+}
+
+/*Second Row
+1	hotel1	hotel2	hotelsu	fastfd	resturn	shop	cine	hall	
+y 32px */
+#toolboxHotel1 {
+	background: url(../res/images/ui/toolboxbotsprite.png) 0px -32px;
+}
+#toolboxHotel2 {
+	background: url(../res/images/ui/toolboxbotsprite.png) -32px -32px;
+}
+#toolboxHotelsu {
+	background: url(../res/images/ui/toolboxbotsprite.png) -64px -32px;
+}
+#toolboxFastfd {
+	background: url(../res/images/ui/toolboxbotsprite.png) -96px -32px;
+}
+#toolboxResturn {
+	background: url(../res/images/ui/toolboxbotsprite.png) -128px -32px;
+}
+#toolboxShop {
+	background: url(../res/images/ui/toolboxbotsprite.png) -160px -32px;
+}
+#toolboxCine {
+	background: url(../res/images/ui/toolboxbotsprite.png) -192px -32px;
+}
+#toolboxHall {
+	background: url(../res/images/ui/toolboxbotsprite.png) -224px -32px;
+}
+
+/*Third Row
+2	parklvl	parkspt	recyle	subway	church	secur	health	hotelservice
+y 64px */
+
+#toolboxParklvl {
+	background: url(../res/images/ui/toolboxbotsprite.png) 0px -64px;
+}
+#toolboxParkspt {
+	background: url(../res/images/ui/toolboxbotsprite.png) -32px -64px;
+}
+#toolboxRecycle {
+	background: url(../res/images/ui/toolboxbotsprite.png) -64px -64px;
+}
+#toolboxSubway {
+	background: url(../res/images/ui/toolboxbotsprite.png) -96px -64px;
+}
+#toolboxChurch {
+	background: url(../res/images/ui/toolboxbotsprite.png) -128px -64px;
+}
+#toolboxSecure {
+	background: url(../res/images/ui/toolboxbotsprite.png) -160px -64px;
+}
+#toolboxHealth {
+	background: url(../res/images/ui/toolboxbotsprite.png) -192px -64px;
+}
+#toolboxHotelser {
+	background: url(../res/images/ui/toolboxbotsprite.png) -224px -64px;
+}
+
+/*fourth Row
+3	condo
+y 96px */
+
+#toolboxCondo {
+	background: url(../res/images/ui/toolboxbotsprite.png) 0px -96px;
+}
+/* For future
+
+#toolboxLobby {
+	background: url(../res/images/ui/toolboxbotsprite.png) -32px 64px;
+}
+#toolboxLobby {
+	background: url(../res/images/ui/toolboxbotsprite.png) -64px 64px;
+}
+#toolboxLobby {
+	background: url(../res/images/ui/toolboxbotsprite.png) -96px 64px;
+}
+#toolboxLobby {
+	background: url(../res/images/ui/toolboxbotsprite.png) -128px 64px;
+}
+#toolboxLobby {
+	background: url(../res/images/ui/toolboxbotsprite.png) -160px 64px;
+}
+#toolboxLobby {
+	background: url(../res/images/ui/toolboxbotsprite.png) -192px 64px;
+}
+#toolboxLobby {
+	background: url(../res/images/ui/toolboxbotsprite.png) -224px 64px;
+}*/

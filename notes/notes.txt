@@ -1,0 +1,116 @@
+SHRIB NOTES
+
+shrib.com/tower3
+
+
+notes and screen shots openskyscraper
+https://github.com/fabianschuiki/OpenSkyscraper/tree/master/doc/simtower
+
+Hold and click jsfiddle from bassguy007(stackexchange) http://jsfiddle.net/M7hT8/1/ 
+
+
+Total Map dimensions
+6400 wide
+
+3600 tall (100 floors)
+360 basement (10 floors)
+
+Between Floor
+Floor = 8x36
+Condo = 128x36 (16 floors wide)
+Office = 72x36 (9 floors wide)
+Retail = 96*36 (12 tiles)
+Resturant = 192 (24 tiles)
+Hotel Single = 32 (4 tiles)
+Hotel Double = 48 (6 tiles)
+Hotel Suite = 80 (10 tiles)
+stairs/exclators = 64*64 (activity has more though)
+
+vairables for each room condo as example
+
+room name = Condo
+length 128/8 = 16
+Cost = 200,000
+Lease = False <-- Offices are rented
+Worth = 150,000 <-- onetime payment as it is not a lease
+SriteVersions
+SpriteCount
+Default sprite = condo_x_empty_day
+-Sprite_forsale_day =
+-Sprite_forsale_night =
+-Sprite_Day
+-Sprite_Evening
+-Sprite_Night
+-Sprite_Busy0
+-Sprite_Busy1
+-Sprite_Busy3
+
+
+
+How time works:
+0 starts at 7:00 AM and will reset 2600 frames later. These frames are divided
+into 7 periods according to the time of day:
+      Frames      Time (24-hr)              Conversions
+1.    0 -  400 =  7:00 - 12:00  1 frame =  45 sec   30 min =  40 frames
+2.  400 -  800 = 12:00 - 12:30  1 frame = 4.5 sec   30 min = 400 frames
+3.  800 - 1200 = 12:30 - 13:00  1 frame = 4.5 sec   30 min = 400 frames
+4. 1200 - 1600 = 13:00 - 17:00  1 frame =  36 sec   30 min =  50 frames
+5. 1600 - 2000 = 17:00 - 21:00  1 frame =  36 sec   30 min =  50 frames
+6. 2000 - 2400 = 21:00 -  1:00  1 frame =  36 sec   30 min =  50 frames
+7. 2400 - 2600 =  1:00 -  7:00  1 frame = 126 sec   30 min ~= 17 frames
+
+
+1 tile = 1 meter
+
+Lobby: $5,000/tile only on floor 1, skylobbies every 15 stories
+Stairs: $5,000, 8x2
+Escalator: $20,000 8x2
+Condo: $80,000 16x1
+Office: $40,000 9x1
+Elevator: $200,000/shaft $80,000/car shaft is 4 tiles wide, up to 30 stories tall + 1 story on top and bottom for machinery, holds up to 8 cars
+Service Elevator: $100,000/shaft, $50,000/car 4 tiles wide
+Express Elevator: $400,000/shaft, $150,000/car 6 tiles wide
+Fast Food: $100,000
+Restaurant: $200,0000
+Retail Shops: $100,000
+Movie Theater: $500,000
+Party Hall: $500,000
+Single Hotel Room: $20,000
+Twin Hotel Room: $50,000
+Hotel Suite: $100,000
+Housekeeping: $50,000
+Parking Ramp: $50,000
+Parking: $3,000
+Recycling Center: $500,000
+Security: $100,000
+Medical Center: $500,000
+Metro Station: $1,000,000
+Cathedral: $3,000,000
+
+
+
+CODE SNIPITS
+Crafty(Crafty("Obj5")[0]).toggleComponent("office_3_active_day","office_3_active_night"); //change sprite
+
+Crafty.DOM.translate(Crafty.lastEvent.clientX,Crafty.lastEvent.clientY); //gets mouse location.
+
+Crafty(Crafty("test170")[0]).destroy(); // Gets a entities id and then destroys it.
+
+Crafty.stage.elem.style.cursor = 'URL(res/images/ui/play.png),auto'; //change mouse
+
+
+Given that x=5, the table below explains the comparison operators:
+Operator	Description					Comparing		Returns	
+	==		equal to					x == 8			false
+										x == 5			true
+	===		equal value and equal type	x === "5"		false
+										x === 5			true
+!=			not equal					x != 8			true
+!==			not equal value/type		x !== "5"		true
+										x !== 5			false
+	>	 	greater than				x > 8			false
+	<	 	less than					x < 8			true
+	>=	 	greater than or equal to	x >= 8			false
+	<=	 	less than or equal to		x <= 8			true	
+
+

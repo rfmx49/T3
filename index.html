@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<!--Library Files CraftyJS & jQuery -->
+		<script src="lib/crafty-min.js"></script>
+		<script src="lib/jquery-2.1.3.min.js"></script>
+		<!--Main script Files -->
+		<script src="src/loading.js"></script>
+
+		<script src="src/buildings.js"></script>
+		<script src="src/objects.js"></script>
+		<script src="src/time.js"></script>		
+		<script src="src/components.js"></script>
+		<script src="src/game.js"></script>		
+		<script src="src/main.js"></script>
+		
+		<!--Main stylesheets -->
+		<link rel="stylesheet" type="text/css" href="src/main.css">
+		<link rel="stylesheet" type="text/css" href="src/sprites.css">
+
+		<!-- Add window listener to start game -->
+	</head>
+	<body>
+
+		<!-- Status Bar -->
+		<table>
+			<tr>
+				<td colspan="2">
+					<center>
+						<table class="bevelBox" id="statusWindow">
+							<tr>
+								<th rowspan="2" id="statusClock"><span id="frameNumber"></span></th>
+								<th id="towerStars"><div id="towerStar1" class="towerStar"></div><div id="towerStar2" class="towerStarDead"></div><div id="towerStar3" class="towerStarDead"></div><div id="towerStar4" class="towerStarDead"></div><div id="towerStar5" class="towerStarDead"></div></th>
+								<td><div id="statusDate"><p><span id="statusDate_Day">1st WD</span><span id="statusDate_Quater">/Q1/Year </span><span id="statusDate_Year">1</span></p></td>
+								<th style="text-align:right">Funds</th>
+								<td style="text-align:right" class="statusValue"><span class="statusValue" id="statusMoney">$</span></td>
+							</tr>
+							<tr>
+								<th colspan="2" class="statusMessage"><span id="statusMessage">Message</span></th>
+								<th style="text-align:right">Population</th>
+								<td style="text-align:right" class="statusValue"><span id="statusPopulation">#</span></td>
+							</tr>
+						</table>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="bevelBox" id="toolbox"> 
+						<table class="table_toolbox" id="toolboxTableTop">
+							<tr class="tr_toolbox">
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtontop" id="toolboxZoomout"></div></td>
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtontop" id="toolboxPause"></div></td>
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtontop" id="toolboxZoomin"></div></td>
+							</tr>
+							<tr class="tr_toolbox">
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtontop" id="toolboxDozer"></div></td>
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtontop" id="toolboxPointer"></div></td>
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtontop" id="toolboxFinder"></div></td>
+							</tr>
+						</table>
+
+						<table class="table_toolbox" id="toolboxTableBottom">
+							<tr class="tr_toolbox">
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtonbot" id="toolboxLobby"></div></td>
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtonbot" id="toolboxElev1"></div></td>
+							</tr>
+							<tr class="tr_toolbox">
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtonbot" id="toolboxOffice"></div></td>
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtonbot" id="toolboxHotel1"></div></td>
+							</tr>
+							<tr class="tr_toolbox">
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtonbot" id="toolboxCondo"></div></td>
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtonbot" id="toolboxFastfd"></div></td>
+							</tr>
+							<tr class="tr_toolbox">
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtonbot" id="toolboxParkspt"></div></td>
+								<td class="td_toolbox"><div class="toolboxButton toolboxButtonbot" id="toolboxSecure"></div></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<td width=800 heigth=580><div id="gameviewDOM"></div></td>
+			</tr>
+		</table>	
+	</body>
+</html>

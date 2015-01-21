@@ -1,0 +1,114 @@
+/*STATUS BAR AT TOP*/
+#statusWindow {
+	background-color:#999999;
+	vertical-align:center;
+	height:52px;
+	padding:3px;
+}
+
+.statusMessage {
+	border:1px solid black;
+	background-color:#d9d9d8;
+	text-align:left;
+}
+
+#statusClock {
+	background-color:#999999;
+	border:1px solid black;
+	text-align:center;
+	height:36px;
+	width:36px;
+}
+
+#towerStars {
+	width:124px;
+	height:20px;
+}
+
+.towerStar {
+	background: url(../res/images/ui/star.png);
+	width:24px;
+	height:19px;
+	float:left;
+}
+
+.towerStarDead {
+	background: url(../res/images/ui/deadstar.png);
+	width:24px;
+	height:19px;
+	float:left;
+}
+
+.statusValue {
+	background-color:#99999a;
+	width:124px;
+	height:19px;
+	text-align:right
+	border:1px solid black;
+}
+
+.bevelBox {
+    background: #666666;
+    border: 1px solid #999999;    
+    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+}
+
+/*GAME WINDOW*/
+#gameviewDOM {
+	background-color:#a5e63e;
+	height:576px;
+	width:100%;
+	max-height:580px;
+	max-width:816px;
+}
+
+/*STATUS BAR AT TOP*/
+#toolbox {
+	vertical-align:top;
+	background-color:#eeeeee;
+	padding:0px;		  
+}
+
+/*tool box table*/
+.table_toolbox {
+	background-color:#d9d9d8;
+	user-select: none;
+}
+
+.tr_toolbox, .td_toolbox {
+	border: 1px solid #8b8d90;
+}
+
+/* all tool box buttons*/
+.toolboxButton {
+	background-color:#d9d9d8;
+	user-select: none;
+}
+
+/* Top buttons*/
+.toolboxButtontop {
+	border: 2px solid #8b8d90;
+	height:20px;
+	width:20px;
+	padding: 0px;
+	user-select: none;
+}
+
+/* Bottom buttons*/
+.toolboxButtonbot {
+	border: 2px solid #8b8d90;
+	height:32px;
+	width:32px;
+	padding: 0px;
+	user-select: none;
+}
+/* Bottom click and hold buttons*/
+.toolboxButtonbotpop {
+	border: 2px solid #8b8d90;
+    height:32px;
+    width:32px;
+    padding:0px;
+    background-color:#d9d9d8
+    user-select: none;
+}
+
