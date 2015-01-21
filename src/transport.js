@@ -1,11 +1,14 @@
 var transportTiles= [[]];
 var transports = {};
+//Transport tiles will go as follows
+//transportTiles[FLOOR][XTILE]== Object(stair naem ect or == 15 objects xtile refrence.
+//Connected floors will equal 
+//transportTiles[Floor][0] = []
+//transportTiles[Floor][0][Connected Floor] = {}
+//transportTiles[Floor][0][Connected Floor] = {}
+//transportTiles[Floor][0][Connected Floor].type[xtile] = ID
 
 function loadTransports() {
-	
-	buildings = JSON.parse('{"Office":{"length":9,"height":1,"owned":false,"cost":40000,"rent":1500,"numberOfSprites":6,"lastSpriteUsed":0,"numberOfEmptySprites":1,"spriteDay":true,"spriteEvening":false,"spriteNight":true,"spriteBusy":false},"Lobby":{"length":4,"height":1,"owned":false,"cost":5000,"rent":0,"numberOfSprites":0,"lastSpriteUsed":0,"numberOfEmptySprites":0,"spriteDay":true,"spriteEvening":false,"spriteNight":false,"spriteBusy":false},"Floor":{"length":1,"height":1,"owned":false,"cost":500,"rent":0,"numberOfSprites":0,"lastSpriteUsed":0,"numberOfEmptySprites":0,"spriteDay":true,"spriteEvening":false,"spriteNight":false,"spriteBusy":false},"Condo":{"length":16,"height":1,"owned":true,"cost":80000,"rent":0,"numberOfSprites":3,"lastSpriteUsed":0,"numberOfEmptySprites":3,"spriteDay":true,"spriteEvening":true,"spriteNight":true,"spriteBusy":false},"Hotel1":{"length":4,"height":1,"owned":false,"cost":5000,"rent":0,"numberOfSprites":2,"lastSpriteUsed":0,"numberOfEmptySprites":2,"spriteDay":true,"spriteEvening":true,"spriteNight":true,"spriteDirty":true},"Hotel2":{"length":6,"height":1,"owned":false,"cost":500,"rent":0,"numberOfSprites":4,"lastSpriteUsed":0,"numberOfEmptySprites":4,"spriteDay":true,"spriteEvening":true,"spriteNight":true,"spriteDirty":true},"Hotelsu":{"length":10,"height":1,"owned":false,"cost":80000,"rent":0,"numberOfSprites":2,"lastSpriteUsed":0,"numberOfEmptySprites":2,"spriteDay":true,"spriteEvening":true,"spriteNight":true,"spriteDirty":true},"Fastfd":{"length":16,"height":1,"owned":false,"cost":100000,"rent":0,"numberOfSprites":5,"lastSpriteUsed":0,"numberOfEmptySprites":0,"spriteDay":false,"spriteEvening":false,"spriteNight":true,"spriteBusy":true}}');
-	
-	
 	transports = JSON.parse('{"Stair":{"length":8,"height":2,"bufferLeft":0,"bufferRight":4,"cost":5000},"Escalat":{"length":8,"height":2,"bufferLeft":0,"bufferRight":4,"cost":20000}}');
 	
 }
@@ -97,8 +100,18 @@ function placeStair (towerFloor, xtile, xpos, objectLength, objectSelected) {
 	//Update floor tiles
 	transportTiles[towerFloor+10][xtile] = {};
 	transportTiles[towerFloor+10][xtile].type = objectSelected;
-	transportTiles[towerFloor+10][xtile].name = objectSelected  + " #" + towerFloor + xtile
-	transportTiles[towerFloor+10][xtile].type = objectSelected;
+	transportTiles[towerFloor+10][xtile].name = objectSelected  + " #" + towerFloor + xtile;
+	//craftyID of object. Crafty(Crafty("testStairs")[0])[0]
+	transportTiles[towerFloor+10][xtile].ID = Crafty(Crafty(transportTiles[towerFloor+10][xtile].name)[0])[0];
+	//uppdate Route
+	transportTiles[towerFloor+10][0] = [];
+	transportTiles[towerFloor+11][0] = [];
+	transportTiles[towerFloor+10][0][towerFloor+11] = {};
+	transportTiles[towerFloor+11][0][towerFloor+10] = {};
+	transportTiles[towerFloor+10][0][towerFloor+11].stair = [];
+	transportTiles[towerFloor+11][0][towerFloor+10].stair = [];
+	transportTiles[towerFloor+10][0][towerFloor+11].stair[xtile] = transportTiles[towerFloor+10][xtile].ID;
+	transportTiles[towerFloor+11][0][towerFloor+10].stair[xtile + 8] = transportTiles[towerFloor+10][xtile].ID;
 	//fill in array with information
 	for (var k = (xtile)+1; k < (xtile+bufferRight); k++) {
 		transportTiles[towerFloor+10][k] = xtile; //set each tile after to be equal to where this buildings start postion is.
