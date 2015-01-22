@@ -95,27 +95,41 @@ function placeStair (towerFloor, xtile, xpos, objectLength, objectSelected) {
 	var spriteString = "Sprite" + objectSelected;
 	
 	//TODO show construction animation
-	Crafty.e(objectSelected  + " #" + towerFloor + xtile + ', transport' + objectSelected + ', ' + spriteString)
+	Crafty.e("S" + towerFloor + xtile + ', transport' + objectSelected + ', ' + spriteString)
 		.attr({x: xpos, y: getFloorPixel(towerFloor)-24, w: objectLength * 8, h: 60})
 	//Update floor tiles
 	transportTiles[towerFloor+10][xtile] = {};
 	transportTiles[towerFloor+10][xtile].type = objectSelected;
-	transportTiles[towerFloor+10][xtile].name = objectSelected  + " #" + towerFloor + xtile;
+	transportTiles[towerFloor+10][xtile].name = "S" + towerFloor + xtile;
 	//craftyID of object. Crafty(Crafty("testStairs")[0])[0]
-	transportTiles[towerFloor+10][xtile].ID = Crafty(Crafty(transportTiles[towerFloor+10][xtile].name)[0])[0];
-	//uppdate Route
-	transportTiles[towerFloor+10][0] = [];
-	transportTiles[towerFloor+11][0] = [];
-	transportTiles[towerFloor+10][0][towerFloor+11] = {};
-	transportTiles[towerFloor+11][0][towerFloor+10] = {};
-	transportTiles[towerFloor+10][0][towerFloor+11].stair = [];
-	transportTiles[towerFloor+11][0][towerFloor+10].stair = [];
-	transportTiles[towerFloor+10][0][towerFloor+11].stair[xtile] = transportTiles[towerFloor+10][xtile].ID;
-	transportTiles[towerFloor+11][0][towerFloor+10].stair[xtile + 8] = transportTiles[towerFloor+10][xtile].ID;
+	transportTiles[towerFloor+10][xtile].id = Crafty(Crafty(transportTiles[towerFloor+10][xtile].name)[0])[0];
+	console.log("ID is" + transportTiles[towerFloor+10][xtile].id);
+	//update Route
+	if ( transportTiles[towerFloor+10][0] == null) {
+		transportTiles[towerFloor+10][0] = [];
+	}
+	if ( transportTiles[towerFloor+11][0] == null) {
+		transportTiles[towerFloor+11][0] = [];
+	}
+	if ( transportTiles[towerFloor+10][0][towerFloor+11] == null) {
+		transportTiles[towerFloor+10][0][towerFloor+11] = {};
+	}
+	if ( transportTiles[towerFloor+11][0][towerFloor+10] == null) {
+		transportTiles[towerFloor+11][0][towerFloor+10] = {};
+	}
+	if (transportTiles[towerFloor+10][0][towerFloor+11].stair == null) {
+		transportTiles[towerFloor+10][0][towerFloor+11].stair = [];
+	}
+	if (transportTiles[towerFloor+11][0][towerFloor+10].stair == null) {
+		transportTiles[towerFloor+11][0][towerFloor+10].stair = [];
+	}
+
+	transportTiles[towerFloor+10][0][towerFloor+11].stair[xtile] = transportTiles[towerFloor+10][xtile].id;
+	transportTiles[towerFloor+11][0][towerFloor+10].stair[xtile + 8] = transportTiles[towerFloor+10][xtile].id;
 	//fill in array with information
 	for (var k = (xtile)+1; k < (xtile+bufferRight); k++) {
-		transportTiles[towerFloor+10][k] = xtile; //set each tile after to be equal to where this buildings start postion is.
-		transportTiles[towerFloor+11][k + bufferRight] = xtile; //set each tile after to be equal to where this buildings start postion is.
+		transportTiles[towerFloor+10][k] = transportTiles[towerFloor+10][xtile].id; //set each tile after to be equal to where this buildings start postion is.
+		transportTiles[towerFloor+11][k + bufferRight] = transportTiles[towerFloor+10][xtile].id; //set each tile after to be equal to where this buildings start postion is.
 	}
 	//same for floor above	
 }

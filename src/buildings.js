@@ -114,7 +114,7 @@ function placeBuilding (towerFloor, xtile, xpos, objectLength, objectSelected) {
 	floorTiles[towerFloor+10][xtile].name = objectSelected + " " + towerFloor + xtile
 	floorTiles[towerFloor+10][xtile].id = Crafty(Crafty(objectSelected + "_" + towerFloor + xtile)[0])[0];
 	for (var k = (xtile)+1; k < (xtile+objectLength); k++) {
-		floorTiles[towerFloor+10][k] = xtile; //set each tile after to be equal to where this buildings start postion is.
+		floorTiles[towerFloor+10][k] = floorTiles[towerFloor+10][xtile].id; //set each tile after to be equal to where this buildings start postion is.
 	}
 	//fill in floor space
 	//check if floor already exists.	
