@@ -1,6 +1,7 @@
 //GLOBAL VARIBLES
 //Crafty.DOM.translate(Crafty.lastEvent.clientX,Crafty.lastEvent.clientY); //gets mouse location.
 //varibles for click and hold to show an items sub menu.
+var consoleLogging = true;
 var holdStarter = null;
 var holdStarterToolbox = null;
 var holdDelay = 300; 
@@ -21,11 +22,11 @@ var firstEvent = true; //some reason if first click event does not register the 
 
 
 $(document).ready(function() {
-	console.log( "ready!" );
+	toConsole( "ready!" );
 
 	//GLOBAL VARIBLES
 	currentZoom = 1;
-	console.log( "Document completed!" );	
+	toConsole( "Document completed!" );	
 
 	//Toolbox buttons adds events to bottom buttons and gets id
 	$("#toolbox").on("mouseenter mouseleave mousedown mouseup", ".toolboxButtonbot" ,function(event){
@@ -42,7 +43,7 @@ $(document).ready(function() {
 				holdStarterToolbox = null;
 				holdActive = true;
 				//begin hold-only operation here, if desired
-				console.log("Holding: " + curentid);
+				toConsole("Holding: " + curentid);
 				var elementID = "#" + curentid;
 				var posof = $(elementID).offset();
 				switch (curentid) {
@@ -135,13 +136,13 @@ $(document).ready(function() {
 			if (holdStarterToolbox) {
 				clearTimeout(holdStarterToolbox);
 				// run click-only operation here
-				console.log("Clicked");
+				toConsole("Clicked");
 				
 				var elementID = "#" + selectedItem;
 				$(elementID).css("background-color", "#d9d9d8");
 				
 				selectedItem = $(this).attr('id');
-				console.log("selected item: " + selectedItem);
+				toConsole("selected item: " + selectedItem);
 				elementID = "#" + selectedItem;
 				$(elementID).css("background-color", "#ffff99");
 				//Build Item
@@ -155,7 +156,7 @@ $(document).ready(function() {
 			// Otherwise, if the mouse was being held, end the hold
 			else if (holdActive) {
 				// end hold-only operation here, if desired
-				console.log("Held");
+				toConsole("Held");
 			}
 		}  
 	});
@@ -180,7 +181,7 @@ $(document).ready(function() {
 			stairPlacement = false;
 			//get newly selected item and change its colour.
 			selectedItem = $(this).attr('id');
-			console.log("selected item: " + selectedItem);
+			toConsole("selected item: " + selectedItem);
 			elementID = "#" + selectedItem;
 			$(elementID).css("background-color", "#ffff99");
 			//check the popup sources id if it is the same as the newly selected id there is no need to change the image of the button.
@@ -218,7 +219,7 @@ $(document).ready(function() {
 			stairPlacement = false;
 			var elementID = "#" + selectedItem;
 			$(elementID).css("background-color", "#d9d9d8");
-			console.log($(this).attr('id'));
+			toConsole($(this).attr('id'));
 			selectedItem = $(this).attr('id');
 			elementID = "#" + selectedItem;
 			$(elementID).css("background-color", "#ffff99");
@@ -246,7 +247,7 @@ function beginCrafty() {
 		/*
 		var timechecked = 0;
 		while ( gameClientWidth < 10 ) {
-			console.log("checking again " + timechecked + "width" + gameClientWidth);
+			toConsole("checking again " + timechecked + "width" + gameClientWidth);
 			gameClientWidth = $('#gameviewDOM').width();
 			timechecked = timechecked + 1;
 			if (timechecked > 9) { gameClientWidth = 816; $('#gameviewDOM').width(816)}
@@ -254,13 +255,13 @@ function beginCrafty() {
 		
 
 		while ( gameClientHeight < 10 ) {
-			console.log("checking again " + timechecked + "height" + gameClientHeight);
+			toConsole("checking again " + timechecked + "height" + gameClientHeight);
 			gameClientHeight = $('#gameviewDOM').height();
 			timechecked = timechecked + 1;
 			if (timechecked > 9) { gameClientHeight = 576; $('#gameviewDOM').height(576); }
 		}*/ 
 	
-		console.log(gameClientWidth + "width x height" + gameClientHeight);
+		toConsole(gameClientWidth + "width x height" + gameClientHeight);
 		// Start crafty and set a background color so that we can see it's working.
 		Crafty.init(gameClientWidth, gameClientHeight, "gameviewDOM");
 		Crafty.background('#8ed2fa');
@@ -269,7 +270,7 @@ function beginCrafty() {
 		Crafty.viewport.mouselook(true);
 
 		//start game or loading scene
-		console.log("ready to start");
+		toConsole("ready to start");
 		Crafty.scene('Loading');
 		Crafty.timer.FPS(30);
 		
@@ -281,7 +282,7 @@ function beginCrafty() {
 
 function getTowerFloor(y) { 
 	if (buildingPlacement) { y=y+18; }
-	if (selectedItem == "toolboxStair" || selectedItem == "toolboxEscalat") { y=y+36; console.log("changed"); } 
+	if (selectedItem == "toolboxStair" || selectedItem == "toolboxEscalat") { y=y+36; toConsole("changed"); } 
 	var towerFloor=(Math.floor(y/36));
 	if ( towerFloor >= 0 ) {
 		towerFloor += 0;
@@ -305,7 +306,7 @@ function getFloorPixel (y) {
 //Viewport change zoom function
 
 function zoomViewport(level) {
-	console.log("zoom level change From: " + currentZoom + " " + level);
+	toConsole("zoom level change From: " + currentZoom + " " + level);
 	currentZoom = currentZoom + level;
 	if (currentZoom == 0) {
 		currentZoom = 0.5;
@@ -325,7 +326,7 @@ function zoomViewport(level) {
 	else if (currentZoom == 1.125 ) {
 		currentZoom = 1;
 	}
-	console.log("zoom level change to: " + currentZoom);
+	toConsole("zoom level change to: " + currentZoom);
 	Crafty.viewport.scale(currentZoom);
 };
 
@@ -334,12 +335,12 @@ function zoomViewport(level) {
 function toolPauseGame() {
 	//check if game is 
 	if ( Crafty.isPaused() ) {
-		console.log("unpausing game");
+		toConsole("unpausing game");
 		Crafty.pause();
 		$("#toolboxPlay").removeAttr("id").attr("id", "toolboxPause");
 	}
 	else {
-		console.log("pausing game");
+		toConsole("pausing game");
 		Crafty.pause();
 		$("#toolboxPause").removeAttr("id").attr("id", "toolboxPlay");
 	}	
@@ -398,8 +399,14 @@ function itemSelected(item) {
 		case "toolboxSecure":
 		case "toolboxHealth":
 		case "toolboxRecycle":
-			console.log("not implemented")
+			toConsole("not implemented")
 			Crafty.stage.elem.style.cursor = 'auto'; //change mouse
 			break;
+	}
+}
+
+function toConsole(msg) {
+	if (consoleLogging) {
+		console.log(msg);
 	}
 }

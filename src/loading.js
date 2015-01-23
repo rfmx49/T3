@@ -9,7 +9,7 @@ Crafty.scene('Loading', function(){
 		.text('Loading...')
 		.attr({ x: 0, y: 100, w: 200 });
 		
-	console.log("done writing loading");
+	toConsole("done writing loading");
 	loadBuildings();
 	loadTransports();
 	var assetsObj = {
@@ -19,7 +19,7 @@ Crafty.scene('Loading', function(){
 			"slash": "slash.wav"
 		},*/
 		"images": ["res/images/building/Floor.jpeg",
-			 "res/images/misc/ground.jpeg",
+			 "res/images/misc/ground.gif",
 			 "res/images/ui/cursor/1.gif",
 			 "res/images/ui/cursor/2.gif",
 			 "res/images/ui/cursor/3.gif",

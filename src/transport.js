@@ -25,7 +25,7 @@ function checkStairCreation(towerFloor, xpos) {
 		var objectBuffer = 4;
 	}
 	//else if its an elevator buffer is 8 on each side.
-	console.log("building we are making is" + objectSelected + " at " + xtile + " on Floor:" + towerFloor);
+	toConsole("building we are making is" + objectSelected + " at " + xtile + " on Floor:" + towerFloor);
 	//transportTiles
 	//TODO check if building placemnt is leagal.
 	//TODO if the object is the lobby?
@@ -33,7 +33,7 @@ function checkStairCreation(towerFloor, xpos) {
 	if (towerFloor >= 1) {
 		//check if the floor below exists first
 		if (floorTiles[towerFloor+9][0] == null) {
-			console.log("object extends past building floor below does not exist.")
+			toConsole("object extends past building floor below does not exist.")
 			//END placement
 			return;
 		}
@@ -58,10 +58,10 @@ function checkStairCreation(towerFloor, xpos) {
 				//
 				for (var k = xtile; k < xtile + bufferRight; k++) {
 					if (transportTiles[towerFloor+10][k] == null) {
-						console.log("nothing in the way at " + k);
+						toConsole("nothing in the way at " + k);
 					}
 					else {
-						console.log("something in the way at " + k + " " + transportTiles[towerFloor+10][k]);
+						toConsole("something in the way at " + k + " " + transportTiles[towerFloor+10][k]);
 						return;
 					}
 					
@@ -69,24 +69,24 @@ function checkStairCreation(towerFloor, xpos) {
 				//floor above
 				for (var k = xtile + bufferRight; k < xtile + objectLength; k++) {
 					if (transportTiles[towerFloor+11][k] == null) {
-						console.log("nothing in the way at " + k);
+						toConsole("nothing in the way at " + k);
 					}
 					else {
-						console.log("something in the way at " + k + " " + transportTiles[towerFloor+11][k]);
+						toConsole("something in the way at " + k + " " + transportTiles[towerFloor+11][k]);
 						return;
 					}
 					
 				}			
 				//build object.
-				console.log("building is legally placed placing it");
+				toConsole("building is legally placed placing it");
 				placeStair(towerFloor, xtile, xpos, objectLength, objectSelected);
 			}			
 			else {
-				console.log("Object extends past floor");
+				toConsole("Object extends past floor");
 			}
 		}
 	}
-	console.log("building should be placed");	
+	toConsole("building should be placed");	
 }
 
 //place the building
@@ -103,7 +103,7 @@ function placeStair (towerFloor, xtile, xpos, objectLength, objectSelected) {
 	transportTiles[towerFloor+10][xtile].name = "S" + towerFloor + xtile;
 	//craftyID of object. Crafty(Crafty("testStairs")[0])[0]
 	transportTiles[towerFloor+10][xtile].id = Crafty(Crafty(transportTiles[towerFloor+10][xtile].name)[0])[0];
-	console.log("ID is" + transportTiles[towerFloor+10][xtile].id);
+	toConsole("ID is" + transportTiles[towerFloor+10][xtile].id);
 	//update Route
 	if ( transportTiles[towerFloor+10][0] == null) {
 		transportTiles[towerFloor+10][0] = [];

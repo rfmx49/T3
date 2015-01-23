@@ -1,6 +1,13 @@
 //Convert Curent timeFrame to Time String
 //frame is the current timeFrame stage is morning time/lunch/afternoon/late night 1,2,3,4
 //OBJECTS
+
+//Colours
+//9ee0ee = Day
+//b4beca = Noon
+//df7780 = dusk
+//b4beca = Later dusk
+//000154 = Night
 function simTime(hour,minute,day,quater,year) {
 	this.hour=hour;
 	this.minute=minute;
@@ -21,8 +28,7 @@ function getFrameTime (frame, stage) {
 		else { 
 			var minutes = 0;
 			var hour = 7;
-		}
-		
+		}		
 	}
 	//start time is 12:00, frame is 400, 15min = 200 frames
 	else if (stage == 2) {
@@ -93,42 +99,49 @@ function timeAdvanceFrame () {
 	if (timeFrame >= 0 && timeFrame < 400 || timeFrame >= 2600)
 	{
 		if (timeFrame >= 2600) {
-			console.log("New day" + timeFrame);
+			toConsole("New day" + timeFrame);
 			todaySet = false;
 			timeFrame = timeFrame - 2600;
 		}
 		timestring = getFrameTime(timeFrame,1);
 		//timestring = "Morning";
+		Crafty.background('#8ed2fa');
 	}
 	else if (timeFrame >= 400 && timeFrame < 800)
 	{
 		timestring = getFrameTime(timeFrame,2);
 		//timestring = "Before Lunch";
+		Crafty.background('#8ed2fa');
 	}
 	else if (timeFrame >= 800 && timeFrame < 1200)
 	{
 		timestring = getFrameTime(timeFrame,2);
 		///timestring = "After Lunch";
+		Crafty.background('#8ed2fa');
 	}
 	else if (timeFrame >= 1200 && timeFrame < 1600)
 	{
 		timestring = getFrameTime(timeFrame,3);
 		//timestring = "Afternoon";
+		Crafty.background('#b4beca');
 	}
 	else if (timeFrame >= 1600 && timeFrame < 2000)
 	{
 		timestring = getFrameTime(timeFrame,3);
 		//timestring = "Evening";
+		Crafty.background('#df7780');
 	}
 	else if (timeFrame >= 2000 && timeFrame < 2400)
 	{
 		timestring = getFrameTime(timeFrame,3);
 		//timestring = "Night";
+		Crafty.background('#000154');
 	}
 	else if (timeFrame >= 2400 && timeFrame < 2600)
 	{
 		timestring = getFrameTime(timeFrame,4);
 		//timestring = "Late Night";
+		Crafty.background('#000154');
 	}
 	timeFrame +=1*3.6; //defualt should be 5ish
 	//5 = 26ish seconds

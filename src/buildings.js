@@ -18,13 +18,13 @@ function checkBuildingCreation(towerFloor, xpos) {
 	//get this buildings length.
 	var objectSelected = selectedItem.substring(7);
 	var objectLength = buildings[objectSelected].length;
-	console.log("building we are making is this many tiles long" + objectLength + " at " + xtile);
+	toConsole("building we are making is this many tiles long" + objectLength + " at " + xtile);
 	//TODO check if building placemnt is leagal.
 	//TODO if the object is the lobby?
 	if (towerFloor >= 1) {
 		//check if the floor below exists first
 		if (floorTiles[towerFloor+9][0] == null) {
-			console.log("object extends past building")
+			toConsole("object extends past building")
 			//END placement
 			return;
 		}
@@ -41,25 +41,25 @@ function checkBuildingCreation(towerFloor, xpos) {
 			if (xtile >= floorTiles[towerFloor+9][0] && (xtile + objectLength) <= floorTiles[towerFloor+9][1]) {
 				for (var k = xtile; k < xtile + objectLength; k++) {
 					if (floorTiles[towerFloor+10][k] == null || floorTiles[towerFloor+10][k] == "f") {
-						console.log("nothing in the way at " + k);
+						toConsole("nothing in the way at " + k);
 					}
 					else {
-						console.log("something in the way at " + k + " " + floorTiles[towerFloor+10][k]);
+						toConsole("something in the way at " + k + " " + floorTiles[towerFloor+10][k]);
 						return;
 					}
 				}
 				//build object.
-				console.log("building is legally placed placing it");
+				toConsole("building is legally placed placing it");
 				placeBuilding(towerFloor, xtile, xpos, objectLength, objectSelected);
 			}
 			else {
-				console.log(xtile + ">=" + floorTiles[towerFloor+9][0] + "&&" + (xtile + objectLength) + "<=" + floorTiles[towerFloor+9][1])
+				toConsole(xtile + ">=" + floorTiles[towerFloor+9][0] + "&&" + (xtile + objectLength) + "<=" + floorTiles[towerFloor+9][1])
 			}
 			
 
 		}
 	}
-	console.log("building should be placed");	
+	toConsole("building should be placed");	
 }
 
 //place the building
@@ -73,7 +73,7 @@ function placeBuilding (towerFloor, xtile, xpos, objectLength, objectSelected) {
 			var lastSprite = buildings[objectSelected].lastSpriteUsed;
 			if (lastSprite == 0) { lastSprite = Math.floor(Math.random() * numOfSprites) + 1; }
 			lastSprite = lastSprite + 1;
-			console.log("last sprite = " + lastSprite);
+			toConsole("last sprite = " + lastSprite);
 			if (lastSprite > numOfSprites) { lastSprite = 1; }
 			var spriteString = objectSelected + '_' + lastSprite + '_active_day'
 		}
@@ -92,7 +92,7 @@ function placeBuilding (towerFloor, xtile, xpos, objectLength, objectSelected) {
 	}
 	buildings[objectSelected].lastSpriteUsed = lastSprite;
 
-	console.log(objectSelected + "_" + towerFloor + xtile);
+	toConsole(objectSelected + "_" + towerFloor + xtile);
 	
 	//TODO show construction animation
 	//get numebr of sprites which contain
@@ -120,11 +120,11 @@ function placeBuilding (towerFloor, xtile, xpos, objectLength, objectSelected) {
 	//check if floor already exists.	
 	if (rebuildFloor == true) {
 		if (Crafty(Crafty("Floor"+towerFloor)[0])[0] != 0) {
-			console.log("destroy old floor");
+			toConsole("destroy old floor");
 			Crafty(Crafty("Floor"+towerFloor)[0]).destroy();
 		}
 		floorPixel = getFloorPixel(towerFloor);
-		console.log("fill floor");
+		toConsole("fill floor");
 		Crafty.e('Floor' + towerFloor + ', buildingFloor, Image, 2D, DOM')
 			.image("res/images/building/Floor.jpeg", 'repeat')
 			.attr({x: (floorTiles[towerFloor+10][0]*8), y: floorPixel, w: ((floorTiles[towerFloor+10][1]*8) - (floorTiles[towerFloor+10][0]*8)), h: 36})	

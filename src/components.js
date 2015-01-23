@@ -62,7 +62,7 @@ Crafty.c('buildingHotel1', {
 		this.requires('2D, DOM');
 		this._attr("_z", 4);
 		this.bind("spriteChange",function(){
-			console.log(this);
+			toConsole(this);
 		}); 
 	},
 	spritechange: function(currentSprite) {
@@ -79,7 +79,7 @@ Crafty.c('buildingHotel2', {
 		this.requires('2D, DOM');
 		this._attr("_z", 4);
 		this.bind("spriteChange",function(){
-			console.log(this);
+			toConsole(this);
 		}); 
 	},
 	spritechange: function(currentSprite) {
@@ -96,7 +96,7 @@ Crafty.c('buildingHotelsu', {
 		this.requires('2D, DOM');
 		this._attr("_z", 4);
 		this.bind("spriteChange",function(){
-			console.log(this);
+			toConsole(this);
 		}); 
 	},
 	spritechange: function(currentSprite) {
@@ -113,7 +113,7 @@ Crafty.c('buildingOffice', {
 		this.requires('2D, DOM');
 		this._attr("_z", 4);
 		this.bind("spriteChange",function(){
-			console.log(this);
+			toConsole(this);
 		}); 
 	},
 	spritechange: function(currentSprite) {
@@ -130,7 +130,7 @@ Crafty.c('buildingFastfd', {
 		this.requires('2D, DOM');
 		this._attr("_z", 4);
 		this.bind("spriteChange",function(){
-			console.log(this);
+			toConsole(this);
 		}); 
 	},
 	spritechange: function(currentSprite) {
@@ -147,7 +147,7 @@ Crafty.c('buildingCondo', {
 		this.requires('2D, DOM');
 		this._attr("_z", 4);
 		this.bind("spriteChange",function(){
-			console.log(this);
+			toConsole(this);
 		}); 
 	},
 	spritechange: function(currentSprite) {
@@ -161,7 +161,7 @@ Crafty.c('buildingLobby', {
 		this.requires('2D, DOM, Image');
 		this._attr("_z", 1);
 		this.bind("spriteChange",function(){
-			console.log(this);
+			toConsole(this);
 		}); 
 	}
 });
@@ -172,7 +172,7 @@ Crafty.c('buildingFloor', {
 		this.requires('2D, DOM, Image');
 		this._attr("_z", 1);
 		this.bind("spriteChange",function(){
-			console.log(this);
+			toConsole(this);
 		}); 
 	}
 });

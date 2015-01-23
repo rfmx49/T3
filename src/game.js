@@ -1,5 +1,5 @@
 Crafty.scene('Game', function() {
-	console.log("gamestarted");
+	toConsole("gamestarted");
 	//generate buildingtiles array
 	//init first floors 11(1 and 10 below)
 	for (var f = 1; f < 12; f++) {
@@ -20,7 +20,7 @@ Crafty.scene('Game', function() {
 			holdStarter = null;
 			holdActive = true;
 			// begin hold-only operation here, if desired
-			console.log('Dragging');
+			toConsole('Dragging');
 			//not sure why this was there( i think to prevent trying to place a building when dragging mouselooking
 			if (buildingPlacement == false || transportPlacement == false || stairPlacement ==false) { trueclick = false; };			
 		}, 299);
@@ -28,7 +28,7 @@ Crafty.scene('Game', function() {
 
 	Crafty.addEvent(Crafty.stage.elem, "mouseup", function (e) {
 		setTimeout(function() {
-			console.log("mouse up");
+			toConsole("mouse up");
 			if (buildingPlacement == true || transportPlacement == true || stairPlacement == true) { trueclick = true; };			
 		}, 300);
 	});
@@ -39,10 +39,10 @@ Crafty.scene('Game', function() {
 		if (trueclick && holdActive == false || firstEvent) {
 			if (Crafty.lastEvent.type == "click" || firstEvent) {
 				var pos = Crafty.DOM.translate(Crafty.lastEvent.clientX,Crafty.lastEvent.clientY);				
-				console.log("X: " + pos.x + " Y: " + pos.y);
+				toConsole("X: " + pos.x + " Y: " + pos.y);
 				//get floor number (floors are 36 px
 				var towerFloor = getTowerFloor(pos.y);
-				console.log("Floor " + towerFloor);
+				toConsole("Floor " + towerFloor);
 				if (buildingPlacement && firstEvent == false) {
 					checkBuildingCreation(towerFloor, pos.x);
 				}
@@ -50,7 +50,7 @@ Crafty.scene('Game', function() {
 					checkStairCreation(towerFloor, pos.x);
 				}
 				else {
-					console.log("something missed " + transportPlacement);
+					toConsole("something missed " + transportPlacement);
 				}
 				firstEvent = false;
 			}
@@ -62,7 +62,7 @@ Crafty.scene('Game', function() {
 	//This enitiy is the ground and background city
 	Crafty.e('Earth, 2D, DOM, Image')
 		.attr({x: 0, y: -55, w: 6400, h: 415})
-		.image('res/images/misc/ground.jpeg', 'repeat');
+		.image('res/images/misc/ground.gif', 'repeat');
 
 	//This enitiy allows us to click around to top of viewport.
 	Crafty.e('Top, 2D, DOM, Color')
