@@ -2,6 +2,7 @@
 //Crafty.DOM.translate(Crafty.lastEvent.clientX,Crafty.lastEvent.clientY); //gets mouse location.
 //varibles for click and hold to show an items sub menu.
 var consoleLogging = true;
+var gameMessageLogging = false;
 var holdStarter = null;
 var holdStarterToolbox = null;
 var holdDelay = 300; 
@@ -276,13 +277,12 @@ function beginCrafty() {
 		
 	}, 300);
 	
-	
-	
 };
 
 function getTowerFloor(y) { 
 	if (buildingPlacement) { y=y+18; }
 	if (selectedItem == "toolboxStair" || selectedItem == "toolboxEscalat") { y=y+36; toConsole("changed"); } 
+	if (selectedItem == "toolboxFinder") { y=y-18; }
 	var towerFloor=(Math.floor(y/36));
 	if ( towerFloor >= 0 ) {
 		towerFloor += 0;
@@ -360,6 +360,9 @@ function itemSelected(item) {
 			toolPauseGame();
 			break;
 		case "toolboxFinder":
+			Crafty.stage.elem.style.cursor = 'URL(res/images/ui/cursor/finder.png),auto';
+			buildingPlacement = true;
+			break;
 		case "toolboxPointer":
 			Crafty.stage.elem.style.cursor = 'auto'; //change mouse
 			break;
@@ -408,5 +411,13 @@ function itemSelected(item) {
 function toConsole(msg) {
 	if (consoleLogging) {
 		console.log(msg);
+		if (gameMessageLogging) {
+			gameMessage(msg);
+		}
 	}
+}
+
+function gameMessage(msg) {
+	// id = statusMessage
+	$('#statusMessage').html(msg);
 }

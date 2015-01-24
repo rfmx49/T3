@@ -60,6 +60,8 @@ into 7 periods according to the time of day:
 7. 2400 - 2600 =  1:00 -  7:00  1 frame = 126 sec   30 min ~= 17 frames
 
 
+2100 - fast food closes
+
 1 tile = 1 meter
 
 Lobby: $5,000/tile only on floor 1, skylobbies every 15 stories

@@ -43,7 +43,11 @@ Crafty.scene('Game', function() {
 				//get floor number (floors are 36 px
 				var towerFloor = getTowerFloor(pos.y);
 				toConsole("Floor " + towerFloor);
-				if (buildingPlacement && firstEvent == false) {
+				if (selectedItem == "toolboxFinder" && buildingPlacement && firstEvent == false) {
+					toConsole("Finder tool");
+					getBuildingInfo(towerFloor, pos.x);
+				}
+				else if (buildingPlacement && firstEvent == false) {
 					checkBuildingCreation(towerFloor, pos.x);
 				}
 				else if (stairPlacement) {
@@ -78,10 +82,8 @@ Crafty.scene('Game', function() {
 	floorTiles[11][1] = (64/8)+(512/8); //x value from before plus width furtherst right on this floor.
 	floorTiles[10][0] = floorTiles[11][0]; //x value from before furthest left on this floor
 	floorTiles[10][1] = floorTiles[11][1];
-	floorTiles[11][64/8] = {};
-	floorTiles[11][64/8].name = "Lobby";
-	for (var k = (64/8)+1; k < 512/8; k++) {
-		floorTiles[11][k] = 64/8; //set each tile after to be equal to where this buildings start postion is.
+	for (var k = (64/8); k < 512/8; k++) {
+		floorTiles[11][k] = Crafty(Crafty("GroundLobby")[0])[0];
 	}
 
 
@@ -125,3 +127,31 @@ Crafty.scene('Game', function() {
 		}
 	}*/
 });
+
+function getBuildingInfo (towerFloor, xpos) {	
+	var xtile = Math.round(xpos/8);
+	toConsole("checking building at floor: " + towerFloor + " tile " + xtile);
+	//check if floor exists
+	if (floorTiles[towerFloor+10][0] == null) {
+		toConsole("Floor is empty")
+		return;
+	}
+	else {
+		//check if floor exists
+		if (floorTiles[towerFloor+10][xtile] == null) {
+			toConsole("nothing found at " + xtile);
+		}
+		else if (floorTiles[towerFloor+10][xtile] == "f") {
+			toConsole("Floor found at " + xtile);
+		}
+		else {
+			toConsole("something found at " + xtile + " ID:" + floorTiles[towerFloor+10][xtile]);
+			var roomName=Crafty(floorTiles[towerFloor+10][xtile]).roomName;
+			gameMessage(roomName)
+			return roomName;
+		}
+	}					
+	//check if xtile contains anything
+	
+	
+}

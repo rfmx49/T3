@@ -53,14 +53,23 @@ Crafty.c('transportEscalat', {
 	},
 });
 
-Crafty.c('buildingHotel1', {
-	_length: 9,
+Crafty.c('buildingRoom', {
+	roomName: "unnamed",
+	spriteSeed:0,
 	_occupants: 0,
 	//TODO rent/cost
 	//array id
 	init: function() {
 		this.requires('2D, DOM');
 		this._attr("_z", 4);
+	}
+});
+
+Crafty.c('buildingHotel1', {
+	_length: 9,
+	//TODO rent/cost
+	//array id
+	init: function() {
 		this.bind("spriteChange",function(){
 			toConsole(this);
 		}); 
@@ -72,12 +81,9 @@ Crafty.c('buildingHotel1', {
 
 Crafty.c('buildingHotel2', {
 	_length: 9,
-	_occupants: 0,
 	//TODO rent/cost
 	//array id
 	init: function() {
-		this.requires('2D, DOM');
-		this._attr("_z", 4);
 		this.bind("spriteChange",function(){
 			toConsole(this);
 		}); 
@@ -89,12 +95,9 @@ Crafty.c('buildingHotel2', {
 
 Crafty.c('buildingHotelsu', {
 	_length: 9,
-	_occupants: 0,
 	//TODO rent/cost
 	//array id
 	init: function() {
-		this.requires('2D, DOM');
-		this._attr("_z", 4);
 		this.bind("spriteChange",function(){
 			toConsole(this);
 		}); 
@@ -106,12 +109,9 @@ Crafty.c('buildingHotelsu', {
 
 Crafty.c('buildingOffice', {
 	_length: 9,
-	_occupants: 0,
 	//TODO rent/cost
 	//array id
 	init: function() {
-		this.requires('2D, DOM');
-		this._attr("_z", 4);
 		this.bind("spriteChange",function(){
 			toConsole(this);
 		}); 
@@ -123,12 +123,9 @@ Crafty.c('buildingOffice', {
 
 Crafty.c('buildingFastfd', {
 	_length: 16,
-	_occupants: 0,
 	//TODO rent/cost
 	//array id
 	init: function() {
-		this.requires('2D, DOM');
-		this._attr("_z", 4);
 		this.bind("spriteChange",function(){
 			toConsole(this);
 		}); 
@@ -140,12 +137,9 @@ Crafty.c('buildingFastfd', {
 
 Crafty.c('buildingCondo', {
 	_length: 16,
-	_occupants: 0,
 	//TODO rent/cost
 	//array id
 	init: function() {
-		this.requires('2D, DOM');
-		this._attr("_z", 4);
 		this.bind("spriteChange",function(){
 			toConsole(this);
 		}); 

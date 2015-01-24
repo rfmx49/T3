@@ -112,3 +112,10 @@
     user-select: none;
 }
 
+#roomPopup {
+	position: aboslute;
+	height:0px;
+	width:0px;
+	background-color:#d9d9d8;
+	z-index:10;
+}

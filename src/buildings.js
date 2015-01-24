@@ -68,9 +68,10 @@ function placeBuilding (towerFloor, xtile, xpos, objectLength, objectSelected) {
 	//TODO get starting sprite.
 	var numOfEmptySprites = buildings[objectSelected].numberOfEmptySprites;
 	var numOfSprites = buildings[objectSelected].numberOfSprites;
+	var lastSprite = 0;
 	if (numOfEmptySprites == 0) {
 		if (numOfSprites > 1) {
-			var lastSprite = buildings[objectSelected].lastSpriteUsed;
+			lastSprite = buildings[objectSelected].lastSpriteUsed;
 			if (lastSprite == 0) { lastSprite = Math.floor(Math.random() * numOfSprites) + 1; }
 			lastSprite = lastSprite + 1;
 			toConsole("last sprite = " + lastSprite);
@@ -82,7 +83,7 @@ function placeBuilding (towerFloor, xtile, xpos, objectLength, objectSelected) {
 	else {
 	//object has empty sprites (condo for sale empty office)
 		if (numOfEmptySprites > 1) {
-			var lastSprite = buildings[objectSelected].lastSpriteUsed;
+			lastSprite = buildings[objectSelected].lastSpriteUsed;
 			if (lastSprite == 0) { lastSprite = Math.floor(Math.random() * numOfEmptySprites) + 1; }
 			lastSprite = lastSprite + 1;
 			if (lastSprite > numOfEmptySprites) { lastSprite = 1; }
@@ -91,14 +92,17 @@ function placeBuilding (towerFloor, xtile, xpos, objectLength, objectSelected) {
 		else { var spriteString = objectSelected + '_0_empty_day'; }
 	}
 	buildings[objectSelected].lastSpriteUsed = lastSprite;
-
 	toConsole(objectSelected + "_" + towerFloor + xtile);
 	
 	//TODO show construction animation
 	//get numebr of sprites which contain
 	var rebuildFloor = false;
-	Crafty.e(objectSelected + "_" + towerFloor + xtile + ',Room, building' + objectSelected + ', ' + spriteString)
+	//CREATION OF ENTITY
+	Crafty.e(objectSelected + "_" + towerFloor + xtile + ',buildingRoom, forSale, building' + objectSelected + ', ' + spriteString)
 		.attr({x: xpos, y: getFloorPixel(towerFloor), w: objectLength * 8, h: 36})
+	var objID = Crafty(Crafty(objectSelected + "_" + towerFloor + xtile)[0])[0];
+	Crafty(objID).roomName = objectSelected + "_" + towerFloor + xtile;
+	Crafty(objID).spriteSeed = lastSprite;
 	//Update floor tiles
 	if (xtile < floorTiles[towerFloor+10][0] || floorTiles[towerFloor+10][0] == null) { 
 		floorTiles[towerFloor+10][0] = xtile;
@@ -109,12 +113,9 @@ function placeBuilding (towerFloor, xtile, xpos, objectLength, objectSelected) {
 		rebuildFloor = true;
 	}
 	if (floorTiles[towerFloor+10][1] == null) { rebuildFloor = false; };
-	floorTiles[towerFloor+10][xtile] = {};
-	floorTiles[towerFloor+10][xtile].type = objectSelected;
-	floorTiles[towerFloor+10][xtile].name = objectSelected + " " + towerFloor + xtile
-	floorTiles[towerFloor+10][xtile].id = Crafty(Crafty(objectSelected + "_" + towerFloor + xtile)[0])[0];
-	for (var k = (xtile)+1; k < (xtile+objectLength); k++) {
-		floorTiles[towerFloor+10][k] = floorTiles[towerFloor+10][xtile].id; //set each tile after to be equal to where this buildings start postion is.
+	//set floor tiles array
+	for (var k = (xtile); k < (xtile+objectLength); k++) {
+		floorTiles[towerFloor+10][k] = objID; //set each tile after to be equal to where this buildings start postion is.
 	}
 	//fill in floor space
 	//check if floor already exists.	

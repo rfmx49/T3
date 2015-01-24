@@ -18,7 +18,6 @@ function simTime(hour,minute,day,quater,year) {
 
 
 function getFrameTime (frame, stage) {
-	time = new Date();
 	if (stage == 1) {
 		//start time is 7:00, frame is 0, 15min = 20 frames
 		if (frame != 0 ) {
@@ -105,45 +104,50 @@ function timeAdvanceFrame () {
 		}
 		timestring = getFrameTime(timeFrame,1);
 		//timestring = "Morning";
-		Crafty.background('#8ed2fa');
+		if (timeFrame >= 0 && timeFrame < 20) {
+			Crafty.background('#8ed2fa');
+		}
 	}
 	else if (timeFrame >= 400 && timeFrame < 800)
 	{
 		timestring = getFrameTime(timeFrame,2);
 		//timestring = "Before Lunch";
-		Crafty.background('#8ed2fa');
 	}
 	else if (timeFrame >= 800 && timeFrame < 1200)
 	{
 		timestring = getFrameTime(timeFrame,2);
 		///timestring = "After Lunch";
-		Crafty.background('#8ed2fa');
 	}
 	else if (timeFrame >= 1200 && timeFrame < 1600)
 	{
 		timestring = getFrameTime(timeFrame,3);
 		//timestring = "Afternoon";
-		Crafty.background('#b4beca');
+		if (timeFrame >= 1200 && timeFrame < 1220) {
+			Crafty.background('#b4beca');
+		}
 	}
 	else if (timeFrame >= 1600 && timeFrame < 2000)
 	{
 		timestring = getFrameTime(timeFrame,3);
 		//timestring = "Evening";
-		Crafty.background('#df7780');
+		if (timeFrame >= 1600 && timeFrame < 1620) {
+			Crafty.background('#df7780');
+		}
 	}
 	else if (timeFrame >= 2000 && timeFrame < 2400)
 	{
 		timestring = getFrameTime(timeFrame,3);
 		//timestring = "Night";
-		Crafty.background('#000154');
+		if (timeFrame >= 2000 && timeFrame < 2020) {
+			Crafty.background('#000154');
+		}
 	}
 	else if (timeFrame >= 2400 && timeFrame < 2600)
 	{
 		timestring = getFrameTime(timeFrame,4);
 		//timestring = "Late Night";
-		Crafty.background('#000154');
 	}
-	timeFrame +=1*3.6; //defualt should be 5ish
+	timeFrame +=1*3.6; //defualt should be 3.6ish
 	//5 = 26ish seconds
 	//4 = 33ish seconds
 	//3.7 - 36ish
